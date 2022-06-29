@@ -1,7 +1,7 @@
-server:
-  port: 8084
-  servlet:
-    context-path: '/ead-notification/'
+#server:
+#  port: 8084
+#  servlet:
+#    context-path: '/ead-notification/'
 
 spring:
   application:
@@ -12,56 +12,59 @@ spring:
     config:
       discovery:
         serviceId: ead-config-server
-  datasource:
-    url:  jdbc:postgresql://localhost:5432/ead-notification-v2
-    username: postgres
-    password: 22100932
-  jpa:
-    hibernate:
-      ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-      jdbc:
-        lob.non-contextual-creation: true
-    properties:
-      hibernate:
-        show_sql: true
-  output:
-    ansi:
-      enabled: Always
-  rabbitmq:
-    addresses: amqps://pyfxikhf:UKpmwpsZObUDfm8OnN39g3tVxc6PK87i@woodpecker.rmq.cloudamqp.com/pyfxikhf
-
-
-logging:
-  level:
-    com.ead: TRACE
-    root: INFO
-    org.springframework.web: DEBUG
-    org.hibernate: INFO
-
-
-ead:
-  broker:
-    exchange:
-      notificationCommandExchange: ead.notificationcommand
-    queue:
-      notificationCommandQueue:
-        name: ead.notificationcommand.ms.notification
-    key:
-      notificationCommandKey: ms.notification
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - refresh
-          - health
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: 'http://localhost:8761/eureka'
-  instance:
-    hostname: localhost
+      username: configserver
+      password: 'ead123cs'
+#
+#  datasource:
+#    url:  jdbc:postgresql://localhost:5432/ead-notification-v2
+#    username: postgres
+#    password: 22100932
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#      dialect: org.hibernate.dialect.PostgreSQLDialect
+#      jdbc:
+#        lob.non-contextual-creation: true
+#    properties:
+#      hibernate:
+#        show_sql: true
+#  output:
+#    ansi:
+#      enabled: Always
+#  rabbitmq:
+#    addresses: amqps://pyfxikhf:UKpmwpsZObUDfm8OnN39g3tVxc6PK87i@woodpecker.rmq.cloudamqp.com/pyfxikhf
+#
+#
+#logging:
+#  level:
+#    com.ead: TRACE
+#    root: INFO
+#    org.springframework.web: DEBUG
+#    org.hibernate: INFO
+#
+#
+#ead:
+#  broker:
+#    exchange:
+#      notificationCommandExchange: ead.notificationcommand
+#    queue:
+#      notificationCommandQueue:
+#        name: ead.notificationcommand.ms.notification
+#    key:
+#      notificationCommandKey: ms.notification
+#
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include:
+#          - refresh
+#          - health
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: 'http://localhost:8761/eureka'
+#  instance:
+#    hostname: localhost
